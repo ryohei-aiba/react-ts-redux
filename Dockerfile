@@ -1,4 +1,4 @@
-FROM ruby:2.4-alpine
+FROM ruby:2.6-alpine
 
 ENV LANG C.UTF-8
 ENV HOME /app
