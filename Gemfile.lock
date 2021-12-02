@@ -108,7 +108,6 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.6.1)
     minitest (5.14.4)
     multi_json (1.15.0)
     mustermann (1.1.1)
@@ -116,8 +115,7 @@ GEM
     mustermann-grape (1.0.1)
       mustermann (>= 1.0.0)
     nio4r (2.5.8)
-    nokogiri (1.12.5)
-      mini_portile2 (~> 2.6.1)
+    nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -210,13 +208,15 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webrick (1.7.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    yard (0.9.26)
+    yard (0.9.27)
+      webrick (~> 1.7.0)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-19
 
 DEPENDENCIES
   actionview (>= 5.2.4.2)
@@ -226,6 +226,7 @@ DEPENDENCIES
   grape-entity
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  nokogiri
   pry-byebug
   pry-doc
   pry-rails
@@ -242,4 +243,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.17.3
+   2.2.32

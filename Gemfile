@@ -23,6 +23,7 @@ gem 'grape'
 gem 'grape-entity'
 gem 'rack-cors'
 gem "actionview", ">= 5.2.4.2"
+gem 'nokogiri'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
