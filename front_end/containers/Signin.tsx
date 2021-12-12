@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux'
-import { logInIfFetchUser } from '../modules/ActionCreater'
+import { SignInIfFetchUser } from '../modules/ActionCreater'
 
 
 type SignInProps = {
-  logInIfFetchUser: typeof logInIfFetchUser
+  SignInIfFetchUser: typeof SignInIfFetchUser
 }
 class SignIn extends React.Component<SignInProps> {
   render(){
@@ -16,10 +16,10 @@ class SignIn extends React.Component<SignInProps> {
         <h1>Sign In</h1>
         <form onSubmit={(e) => {
           e.preventDefault()
-          this.props.logInIfFetchUser(email.value, password.value)
+          this.props.SignInIfFetchUser(email.value, password.value)
         }}>
-          <input type='text' ref={node => email = node}/>
-          <input type='password' ref={node => password = node}/>
+          <input type='text' ref={ node => {email = node} }/>
+          <input type='password' ref={ node => {password = node} }/>
           <button type='submit'>ログイン</button>
         </form>
       </div>
@@ -27,4 +27,4 @@ class SignIn extends React.Component<SignInProps> {
   }
 }
 
-export default connect(null,{ logInIfFetchUser })(SignIn)
+export default connect(null,{ SignInIfFetchUser })(SignIn)

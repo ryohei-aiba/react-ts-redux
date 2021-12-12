@@ -2,23 +2,21 @@ import * as React from 'react'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { NavLink } from "react-router-dom";
-import { /*AppState,*/ CounterType } from '../../../modules/Reducers'
+import { CounterType } from 'front_end/modules/ActionTypes';
 import { CountHeader } from '../Header'
 import { AddButton } from './Add'
-import Logout from '../../Signout'
 import { ReduceButton } from './Reduce'
 import { increment, decrement, signOut } from '../../../modules/ActionCreater'
-import { Signer } from 'crypto';
 import Signout from '../../Signout';
 
 
 type CountProps = {
   name: string,
-  counterState: Array<CounterType>,
+  counterState: Array<CounterType['state']>,
   path: string
   increment: typeof increment,
   decrement: typeof decrement,
-  logout: typeof signOut
+  signOut: typeof signOut
 }
 
 type CountState = {
@@ -55,7 +53,7 @@ class Count extends React.Component<CountProps, CountState> {
         <CountHeader userName={this.props.name} number={this.props.counterState[this.props.counterState.length - 1].number} />
         {renderButton}
         {'\n'}
-        <NavLink to='/history'>検索履歴一覧</NavLink>
+        <NavLink to='/history'>履歴一覧</NavLink>
         {'\n'}
         <Signout />
       </div>
@@ -71,7 +69,7 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   increment: () => {dispatch(increment())},
   decrement: () => {dispatch(decrement())},
-  logout: () => {dispatch(signOut())}
+  signOut: () => {dispatch(signOut())}
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Count)

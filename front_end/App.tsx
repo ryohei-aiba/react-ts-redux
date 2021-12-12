@@ -16,10 +16,10 @@ const App = ({history}: AppProps) => {
     <ConnectedRouter history={history}>
       <Switch>
         <Route exact path='/signin' component={SignIn} />
-        
+        <AuthRoute>         
           <Route exact path='/counter' component={Count} />
-          <Route exact path='/history' component={HistoryList} />
-          
+          <Route exact path='/history' component={HistoryList}></Route>
+        </AuthRoute> 
       </Switch>
     </ConnectedRouter>
   )

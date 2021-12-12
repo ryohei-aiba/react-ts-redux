@@ -27,12 +27,12 @@ export type UserActionType = {
 
 export type CounterStateType = {
   number: number,
-  timeStamp: Date
+  timeStamp: Date,
+  action: "increment" | "decrement" | null
 }
 
 export type CounterActionType = {
-  type: keyof typeof COUNTER_ACTION_TYPE,
-  payload: CounterStateType
+  type: keyof typeof COUNTER_ACTION_TYPE
 }
 
 export const USER_ACTION_TYPE = {
@@ -45,9 +45,3 @@ export const COUNTER_ACTION_TYPE = {
   DECREMENT: 'DECREMENT'
 } as const
 
-export const LOGIN = 'LOGIN'
-export const LOGOUT = 'LOGOUT'
-export const INCREMENT = 'INCREMENT'
-export const DECREMENT = 'DECREMENT'
-
-export type Action = ReturnType<typeof increment | typeof decrement>

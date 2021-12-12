@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux'
-import { NavLink } from "react-router-dom";
-import { /*AppState,*/ CounterType } from '../../modules/Reducers'
+import { Link, NavLink } from "react-router-dom";
+import { /*AppState,*/} from '../../modules/Reducers'
+import { CounterType } from 'front_end/modules/ActionTypes';
 import { CountHeader } from './Header'
-import Logout from '../Logout'
+import SignOut from '../Signout'
 
 type HistoryListProps = {
   name: string,
-  counterState: Array<CounterType>
+  counterState: Array<CounterType['state']>
 }
 
 const HistoryList: React.FC<HistoryListProps> = props => {
@@ -30,10 +31,10 @@ const HistoryList: React.FC<HistoryListProps> = props => {
     <div style={{whiteSpace: 'pre-line'}}>
       <CountHeader userName={props.name} number={props.counterState[props.counterState.length -1].number} />
       <h1>検索履歴一覧</h1>
-      <NavLink to='/count'>TOP</NavLink>
+      <NavLink to='/counter'>TOP</NavLink>
       {list}
       {'\n'}
-      <Logout logout={undefined} />
+      <SignOut />
     </div>
   )
 }

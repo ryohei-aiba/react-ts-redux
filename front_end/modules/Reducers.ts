@@ -1,13 +1,12 @@
-import { Action, LOGIN, LOGOUT, INCREMENT, DECREMENT } from './ActionTypes'
+import { UserType,CounterType } from './ActionTypes'
 import { combineReducers } from 'redux'
 import { History } from 'history'
 import { connectRouter } from 'connected-react-router'
 
-
 const initialState = {
   userState: {
     name: '',
-    isLoggedIn: false
+    isSignedIn: false
   },
   counterState: [
     {
@@ -18,43 +17,33 @@ const initialState = {
   ]
 }
 
-type userReducerType = {
-  name: string,
-  isLoggedIn: boolean
-}
 
-export function userReducer(state = initialState.userState, action: Action): userReducerType {
+export function userReducer(state = initialState.userState, action: UserType['action']): UserType["state"]{
   switch(action.type) {
-    case LOGIN:
+    case "SIGNIN":
       return {
-        name: action.name,
-        isLoggedIn: !!action.name.trim()
+        ...state,
+        ...action.payload
       }
-    case LOGOUT:
+    case "SIGNOUT":
       return {
-        name: '',
-        isLoggedIn: false
+        ...initialState.userState
       }
     default:
       return state;
   }
 }
 
-export type CounterType = {
-  number: number,
-  timeStamp: Date,
-  action: 'increment' | 'decrement' | null
-}
 
-export function counterReducer(state = initialState.counterState, action: Action): Array<CounterType>{
+export function counterReducer(state = initialState.counterState, action: CounterType['action']): Array<CounterType['state']>{
   switch(action.type) {
-    case INCREMENT:
+    case "INCREMENT":
       return [...state, {
         number: state[state.length - 1].number += 1,
         timeStamp: new Date,
         action: 'increment'
       }]
-    case DECREMENT:
+    case "DECREMENT":
       return [...state, {
         number: state[state.length - 1].number -= 1,
         timeStamp: new Date,

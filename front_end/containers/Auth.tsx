@@ -4,19 +4,21 @@ import { Route, Redirect } from "react-router-dom";
 
 
 type AuthRouteProps = {
-  isLoggedIn: boolean
+  isSignedIn: boolean
+  pathname: string
 }
 
 const AuthRoute: React.FC<AuthRouteProps> = props => {
   return(
-    <Route exact path='/count'>
-      {props.isLoggedIn ? props.children : <Redirect to='/signin' />}
+    <Route exact path={props.pathname}>
+      {props.isSignedIn ? props.children : <Redirect to='/signin' />}
     </Route>
   )
 }
 
 const mapStateToProps = (state: any) => ({
-  isLoggedIn: state.user.isLoggedIn
+  isSignedIn: state.user.isSignedIn,
+  pathname: state.router.location.pathname
 })
 
 export default connect(mapStateToProps, null)(AuthRoute)
